@@ -28,3 +28,7 @@ module.exports.educationValidations = [
     check('fieldofstudy', 'Field of study is required').not().isEmpty(),
     check('from', 'From date is required').not().isEmpty()
 ]
+
+module.exports.createPostValidations = [
+    check('text', 'Text is required').not().isEmpty(),
+]
