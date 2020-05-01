@@ -1,6 +1,6 @@
 const express = require('express');
 const auth = require('../../middleware/auth')
-const { getProfile, create, getProfiles, getProfileByUserId, deleteProfile, experience, deleteExperience, education, deleteEducation } = require('../../controllers/profile');
+const { getProfile, create, getProfiles, getProfileByUserId, deleteProfile, experience, deleteExperience, education, deleteEducation, githubRepos } = require('../../controllers/profile');
 const { createProfileValidations, experienceValidations, educationValidations } = require('../../helpers/checks');
 const router = express.Router();
 
@@ -17,6 +17,7 @@ router.put('/experience', [auth, experienceValidations], experience);
 router.delete('/experience/:expId', [auth], deleteExperience);
 router.put('/education', [auth, educationValidations], education);
 router.delete('/education/:eduId', [auth], deleteEducation);
+router.get('/github/:username', githubRepos);
 
 
 module.exports = router;
