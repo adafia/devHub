@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 require('./models/User');
 require('./models/Profile');
+require('./models/Posts');
 
 const app = express();
 
