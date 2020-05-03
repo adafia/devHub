@@ -3,14 +3,14 @@ const { validationResult } = require('express-validator');
 const request = require('request');
 const config = require('config');
 
-const Profile = mongoose.model('Profile');
-const User = mongoose.model('User');
-const Post = mongoose.model('Post');
+const Profile = mongoose.model('profile');
+const User = mongoose.model('user');
+const Post = mongoose.model('post');
 
 const Profiles = {
     async getProfileByUserId (req, res) {
         try {
-            const profile = await Profile.findOne({ user: req.params.userId }).populate('User', ['name', 'avatar']);
+            const profile = await Profile.findOne({ user: req.params.userId }).populate('user', ['name', 'avatar']);
 
             if (!profile) {
                 return res.status(400).json({ msg: 'Profile not found'})
@@ -29,8 +29,7 @@ const Profiles = {
 
     async getProfile (req, res) {
         try {
-            const profile = await Profile.findOne({ user: req.user.id }).populate('User', ['name', 'avatar']);
-
+            const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
             if (!profile) {
                 return res.status(400).json({ msg: 'There is no profile for this user'})
             }
@@ -45,7 +44,7 @@ const Profiles = {
 
     async getProfiles (req, res) {
         try {
-            const profiles = await Profile.find().populate('User', ['name', 'avatar']);
+            const profiles = await Profile.find().populate('user', ['name', 'avatar']);
             return res.json(profiles)
         } catch (err) {
             console.error(err.message);

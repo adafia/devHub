@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     text: { type: String, required: true },
     name: { type: String },
@@ -23,4 +23,4 @@ const PostSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now }
 });
 
-mongoose.model('Post', PostSchema)
+mongoose.model('post', PostSchema)
