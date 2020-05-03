@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ProfileSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     company: { type: String },
     website: { type: String },
@@ -44,4 +44,4 @@ const ProfileSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now }
 });
 
-mongoose.model('Profile', ProfileSchema)
+mongoose.model('profile', ProfileSchema)

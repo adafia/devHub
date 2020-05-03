@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const { validationResult } = require('express-validator');
 
-const Post = mongoose.model('Post')
-const User = mongoose.model('User')
+const Post = mongoose.model('post')
+const User = mongoose.model('user')
 
 const Posts = {
     async create (req, res) {

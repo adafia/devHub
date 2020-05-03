@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 const { hash, compare } = require('../helpers/passwords');
 const sign = require('../helpers/sign');
 
-const User = mongoose.model('User')
+const User = mongoose.model('user')
 
 const Users = {
     async register (req, res) {
