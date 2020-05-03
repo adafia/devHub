@@ -5,6 +5,7 @@ const config = require('config');
 
 const Profile = mongoose.model('Profile');
 const User = mongoose.model('User');
+const Post = mongoose.model('Post');
 
 const Profiles = {
     async getProfileByUserId (req, res) {
@@ -101,6 +102,7 @@ const Profiles = {
 
     async deleteProfile (req, res) {
         try {
+            await Post.deleteMany({ user: req.user.id })
             await Profile.findOneAndRemove({ user: req.user.id });
             await User.findOneAndRemove({ _id: req.user.id });
 
