@@ -23,7 +23,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 </Link>
             </li>
             <li>
-                <Link onClick={logout} to="!#">
+                <Link onClick={logout} to="/">
                     <i className="fas fa-sign-out-alt"></i>
                     {' '}
                     <span className="hide-sm">Logout</span>
@@ -44,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     return (
         <nav className="navbar bg-dark">
             <h1>
-                <Link to="/"><i className="fas fa-code"></i> Dev Hub</Link>
+                <Link to="/"><i className="fas fa-code"></i> Dev Hubble</Link>
             </h1>
             { !loading && (<Fragment>
                 { isAuthenticated ? authLinks : guestLinks }

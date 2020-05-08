@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { validationResult } = require('express-validator');
 const request = require('request');
-const config = require('config');
+require('dotenv').config();
 
 const Profile = mongoose.model('profile');
 const User = mongoose.model('user');
@@ -196,8 +196,10 @@ const Profiles = {
 
     async githubRepos (req, res) {
         try {
+            const gitHubId = process.env.GITHUB_CLIENT_ID
+            const gitHubSecret = process.env.GITHUB_SECRET
             const options = {
-                uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
+                uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${gitHubId}&client_secret=${gitHubSecret}`,
                 method: 'GET',
                 headers: { 'user-agent': 'node.js' }
             };
